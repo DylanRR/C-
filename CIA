@@ -31,13 +31,9 @@ int main(){
         		pin = pin + 0;
         		string pinString = to_string(pin);
         		int pina = stoi(string(1, pinString[0]));
-        		cout<< pina <<endl;
         		int ping = stoi(string(1, pinString[pinString.length()-1]));
-        		cout<< ping <<endl;
         		int pinf = stoi(string(1, pinString[pinString.length()-2]));
-        		cout<< pinf <<endl;
         		int pine = stoi(string(1, pinString[pinString.length()-3]));
-        		cout<< pine <<endl;
         		int product = (pine*pinf*ping);
         		if(pina%2 == 0 || pina == 1)
         		    cout<< "Leading didgit is either even or '1'" <<endl;
@@ -45,8 +41,7 @@ int main(){
         		    int count = 0;
         		    for(int i=1; i <= product; ++i){
                         if(product % i == 0){
-                            cout<< i <<endl;
-                            count = count +1;
+                            count++;
                         }
                     }
                     if(count > 3)
@@ -59,3 +54,4 @@ int main(){
     	}
     	return 0;
 }
+
