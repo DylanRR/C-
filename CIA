@@ -1,0 +1,61 @@
+#include <iostream> 
+
+using namespace std;
+
+int main(){
+	int pin; // Entire Pin Number
+    cout<< "Welcome to the CIA Pin Compliance Program" << endl;
+	cout<< "Please enter pin number" << endl;	
+	cin >> pin;
+	bool primary = true;
+	bool start = true;
+    	while (start){ // -1 is the option for exit 
+        	if(!primary){
+            	cout<< "Welcome to the CIA Pin Compliance Program" << endl;
+            	cout<< "Please enter pin number" << endl;	
+            	cin >> pin;
+        	}
+        	primary = false;
+            if(pin == -1)
+                return 0;
+            if(pin < 10000 || pin > 9999999){
+                bool valid = true;
+                while (valid){
+                		cout<< "Invalid pin. Please re-enter pin number" <<endl;
+                		cin>> pin;
+                		if(pin > 9999 && pin < 10000000){
+                		    valid = false;
+                		}
+            	}
+            }
+        		pin = pin + 0;
+        		string pinString = to_string(pin);
+        		int pina = stoi(string(1, pinString[0]));
+        		cout<< pina <<endl;
+        		int ping = stoi(string(1, pinString[pinString.length()-1]));
+        		cout<< ping <<endl;
+        		int pinf = stoi(string(1, pinString[pinString.length()-2]));
+        		cout<< pinf <<endl;
+        		int pine = stoi(string(1, pinString[pinString.length()-3]));
+        		cout<< pine <<endl;
+        		int product = (pine*pinf*ping);
+        		if(pina%2 == 0 || pina == 1)
+        		    cout<< "Leading didgit is either even or '1'" <<endl;
+        		else if(ping+pinf+pine > 14){
+        		    int count = 0;
+        		    for(int i=1; i <= product; ++i){
+                        if(product % i == 0){
+                            cout<< i <<endl;
+                            count = count +1;
+                        }
+                    }
+                    if(count > 3)
+                        cout<< "Pin Accepted" <<endl;
+                    else
+                        cout<< "There are not at least 4 factors of the product of the last 3 digets" <<endl;
+        		}
+        		else
+        		    cout<< "Last 3 digets are less than or equal to 14" <<endl;
+    	}
+    	return 0;
+}
